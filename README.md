@@ -21,10 +21,10 @@ Using modern web technologies such as Vite, TailwindCSS, React, JavaScript, MySQ
 
 ## Team Roles
 
-Full Stack Lead: Overall App design and functionality
-Front End: User Interface and visuals
-Back End: User Login, Logic, and databases
-Product Research: Wireframe/Readme/Foundation setting
+- Full Stack Lead: Overall App design and functionality
+- Front End: User Interface and visuals
+- Back End: User Login, Logic, and databases
+- Product Research: Wireframe/Readme/Foundation setting
 
 *TODO: choose which roles you want to primarily be working on for the duration of this App & send out a message in DunDrag. Roles are not locked into place, but gives general guidelines on structure without stepping onto each other's toes so we can be flexible as needed/wanted.*
 
@@ -103,7 +103,7 @@ project_structure_here
 ├─ README.md
 ```
 
-- [ ] ## To-Do Items (Kanban Board)
+## To-Do Items (Kanban Board)
 
   Use this section to track to-do items and tasks using a Kanban board:
 
