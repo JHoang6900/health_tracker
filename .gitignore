@@ -171,6 +171,9 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+# Personal Notes or additional Files and Information
+notes/
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -196,3 +199,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
