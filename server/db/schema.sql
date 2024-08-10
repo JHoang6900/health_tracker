@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS patients (
 
 CREATE TABLE IF NOT EXISTS users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL 
+    username VARCHAR(255) UNIQUE NOT NULL
+    -- password VARCHAR(255) NOT NULL 
 );
 
 CREATE TABLE IF NOT EXISTS vitals (
@@ -28,4 +28,6 @@ CREATE TABLE IF NOT EXISTS vitals (
     FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+
 
