@@ -7,7 +7,7 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('im goated fr!');
 })
 
 app.listen(8080, () => {
@@ -15,5 +15,5 @@ app.listen(8080, () => {
 })
 
 
-// nodemon is useful
+
 // concurrently is useful 
