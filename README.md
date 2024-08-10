@@ -108,8 +108,6 @@ project_structure_here
   Use this section to track to-do items and tasks using a Kanban board:
 
   ### To Do:
-
-  - [ ] Invite Jake/Marcus/Spencer
   - [ ] Wireframe *(see [Front End](#front-end))*
   - [ ] Draft Database Schema *(see [Back End](#back-end))*
   - [ ] Choose Team Roles *(see [Team Roles](#team-roles))*
