@@ -2,7 +2,8 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const DBConnection = require('./database.js');
-const router = require('./routes/vitals'); 
+const vitalsRouter = require('./routes/vitals');
+const patientsRouter = require('./routes/patients.js') 
 
 
 
@@ -11,7 +12,8 @@ const app = express();
 app.use(express.json()); // This line is important for parsing JSON data in requests
 // ... Your API routes will go here, and they'll use the DBConnection object to interact with the database
 
-app.use('/vitals', router); 
+app.use('/vitals', vitalsRouter); 
+app.use('/patients', patientsRouter );
 
 
 // respond with "hello world" when a GET request is made to the homepage

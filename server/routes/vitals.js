@@ -1,11 +1,9 @@
 const express = require("express");
-const mysql = require("mysql2");
-const DBConnection = require("../database.js");
-const router = express.Router();
+const vitalsRouter = express.Router();
 const DBConnectionPromise = require("../database.js");
 
 // GET route to retrieve all vitals
-router.get("/", async (req, res) => {
+vitalsRouter.get("/", async (req, res) => {
   try {
     const connection = await DBConnectionPromise; // Wait for the Promise to resolve
     connection.query("SELECT * FROM vitals", (err, results) => {
@@ -23,7 +21,7 @@ router.get("/", async (req, res) => {
 });
 
 // POST route to create a new vital entry
-router.post("/", async (req, res) => {
+vitalsRouter.post("/", async (req, res) => {
   try {
     const connection = await DBConnectionPromise;
 
@@ -70,7 +68,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+vitalsRouter.put('/:id', async (req, res) => {
   try {
     const connection = await DBConnectionPromise; 
 
@@ -108,7 +106,7 @@ router.put('/:id', async (req, res) => {
 
 
 // DELETE route to delete a vital entry
-router.delete("/:id", async (req, res) => {
+vitalsRouter.delete("/:id", async (req, res) => {
   try {
     const connection = await DBConnectionPromise;
 
@@ -137,4 +135,4 @@ router.delete("/:id", async (req, res) => {
 });
 
 
-module.exports = router;
+module.exports = vitalsRouter;
