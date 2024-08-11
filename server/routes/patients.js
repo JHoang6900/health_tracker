@@ -20,7 +20,7 @@ patientsRouter.get("/", async (req, res) => {
   }
 });
 
-// POST route to create a new vital entry
+// POST route to create a new patient
 patientsRouter.post("/", async (req, res) => {
   try {
     const connection = await DBConnectionPromise;
@@ -50,6 +50,7 @@ patientsRouter.post("/", async (req, res) => {
   }
 });
 
+// PUT route to UPDATE a patient
 patientsRouter.put('/:id', async (req, res) => {
     try {
       const connection = await DBConnectionPromise; 

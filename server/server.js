@@ -3,7 +3,8 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const DBConnection = require('./database.js');
 const vitalsRouter = require('./routes/vitals');
-const patientsRouter = require('./routes/patients.js') 
+const patientsRouter = require('./routes/patients.js')
+const usersRouter = require('./routes/users.js')
 
 
 
@@ -14,6 +15,7 @@ app.use(express.json()); // This line is important for parsing JSON data in requ
 
 app.use('/vitals', vitalsRouter); 
 app.use('/patients', patientsRouter );
+app.use('/users', usersRouter);
 
 
 // respond with "hello world" when a GET request is made to the homepage
