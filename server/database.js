@@ -1,9 +1,7 @@
 const mysql = require('mysql2');
-const dotenv = require('dotenv'); // Load environment variables
+const dotenv = require('dotenv');
 
-dotenv.config(); // Load environment variables from .env file
-
-console.log('DB_HOST:', process.env.DB_HOST); // debugging line
+dotenv.config();
 
 const DBConnection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -12,10 +10,15 @@ const DBConnection = mysql.createConnection({
     database: process.env.DB_DATABASE
 });
 
-DBConnection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.stack);
-        return;
-    }
-    console.log('Connected to health_tracker_db.');
+// Export a Promise that resolves when the connection is established
+module.exports = new Promise((resolve, reject) => {
+    DBConnection.connect((err) => {
+        if (err) {
+            console.error('Error connecting to the database:', err.stack);
+            reject(err); // Reject the Promise if there's an error
+        } else {
+            console.log('Connected to health_tracker_db.');
+            resolve(DBConnection); // Resolve the Promise with the connection object
+        }
+    });
 });
