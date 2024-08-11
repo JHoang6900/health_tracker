@@ -24,7 +24,6 @@ router.get("/", async (req, res) => {
 
 // POST route to create a new vital entry
 router.post("/", async (req, res) => {
-  // Mark the handler as async
   try {
     const connection = await DBConnectionPromise;
 
@@ -71,18 +70,71 @@ router.post("/", async (req, res) => {
   }
 });
 
-// PUT route to update a vital entry
-router.put("/:id", (req, res) => {
-  // Need to specify the vital ID in the URL
-  // ... your logic to update a vital entry (SQL query using DBConnection)
-  res.send("Update a vital entry"); // Replace with actual data update and response
+router.put('/:id', async (req, res) => {
+  try {
+    const connection = await DBConnectionPromise; 
+
+    const vitalId = req.params.id;
+    const updatedData = req.body; // Get all updated data from the request body
+
+    // Dynamically build the SET clause
+    const setClause = Object.keys(updatedData)
+      .map(key => `${key} = ?`)
+      .join(', ');
+
+    const query = `
+      UPDATE vitals 
+      SET ${setClause} 
+      WHERE vital_id = ?
+    `;
+
+    const values = [...Object.values(updatedData), vitalId]; // Combine updated values and vitalId
+
+    connection.query(query, values, (err, results) => {
+      if (err) {
+        console.error("Error updating vitals:", err);
+        res.status(500).json({ error: "Error updating vitals" });
+      } else if (results.affectedRows === 0) {
+        res.status(404).json({ error: 'Vital not found' });
+      } else {
+        res.json({ message: 'Vital updated successfully' });
+      }
+    });
+  } catch (err) {
+    console.error("Database connection error:", err);
+    res.status(500).json({ error: "Database connection error" });
+  }
 });
 
+
 // DELETE route to delete a vital entry
-router.delete("/:id", (req, res) => {
-  // Need to specify the vital ID in the URL
-  // ... your logic to delete a vital entry (SQL query using DBConnection)
-  res.send("Delete a vital entry"); // Replace with actual data deletion and response
+router.delete("/:id", async (req, res) => {
+  try {
+    const connection = await DBConnectionPromise;
+
+    const vitalId = req.params.id; // Get vital_id from URL parameters
+
+    const query = `
+      DELETE FROM vitals 
+      WHERE vital_id = ?
+    `;
+    const values = [vitalId];
+
+    connection.query(query, values, (err, results) => {
+      if (err) {
+        console.error("Error deleting vitals:", err);
+        res.status(500).json({ error: "Error deleting vitals" });
+      } else if (results.affectedRows === 0) {
+        res.status(404).json({ error: 'Vital not found' });
+      } else {
+        res.json({ message: 'Vital deleted successfully' });
+      }
+    });
+  } catch (err) {
+    console.error("Database connection error:", err);
+    res.status(500).json({ error: "Database connection error" });
+  }
 });
+
 
 module.exports = router;
