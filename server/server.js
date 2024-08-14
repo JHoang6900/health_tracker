@@ -10,6 +10,7 @@ const usersRouter = require('./routes/users.js')
 
 const app = express();
 
+app.use(cors());
 app.use(express.json()); // This line is important for parsing JSON data in requests
 // ... Your API routes will go here, and they'll use the DBConnection object to interact with the database
 
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.use(cors());
+
 
 app.listen(8080, () => {
     console.log('Server is listening on port 8080.');
