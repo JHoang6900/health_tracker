@@ -5,10 +5,16 @@ const DBConnection = require('./database.js');
 const vitalsRouter = require('./routes/vitals');
 const patientsRouter = require('./routes/patients.js')
 const usersRouter = require('./routes/users.js')
-
+const session = require('express-session');
 
 
 const app = express();
+
+app.use(session({
+  secret: 'superdupersecret',
+  resave: false,
+  saveUninitialized: true,
+}));
 
 app.use(cors());
 app.use(express.json()); // This line is important for parsing JSON data in requests
