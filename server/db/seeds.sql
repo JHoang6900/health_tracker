@@ -1,9 +1,10 @@
 -- Insert dummy data into the 'users' table
-INSERT INTO users (username) VALUES
-('nurse1'),
-('nurse2'),
-('nurse3'),
-('doctor1');
+-- Insert dummy data into the 'users' table (with generated salts and hashed passwords)
+INSERT INTO users (username, password, salt) VALUES
+('nurse1', '$2b$10$somesaltvalue1hashedpasswordfornurse1', 'somesaltvalue1'),
+('nurse2', '$2b$10$anothersaltvalue2hashedpasswordfornurse2', 'anothersaltvalue2'),
+('nurse3', '$2b$10$yetanothersalt3hashedpassword3', 'yetanothersalt3'),
+('doctor1', '$2b$10$andsomesalt4hashedpassword4', 'andsomesalt4');
 
 -- Insert dummy data into the 'patients' table
 INSERT INTO patients (name) VALUES

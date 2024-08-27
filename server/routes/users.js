@@ -25,13 +25,13 @@ usersRouter.post("/", async (req, res) => {
   try {
     const connection = await DBConnectionPromise;
 
-    const { username } = req.body;
+    const { username, password, salt } = req.body;
 
     const query = `
-            INSERT INTO users (username)
-            VALUES (?)
+            INSERT INTO users (username, password, salt)
+            VALUES (?, ?, ?)
           `;
-    const values = [username];
+    const values = [username, password, salt];
 
     connection.query(query, values, (err, results) => {
       if (err) {

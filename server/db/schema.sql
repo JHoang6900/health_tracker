@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,  -- hashed password here
-    salt VARCHAR(255) NOT NULL -- salt here
+    salt VARCHAR(255) -- salt here
 );
 
 CREATE TABLE IF NOT EXISTS vitals (
