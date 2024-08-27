@@ -1,6 +1,7 @@
 const express = require("express");
 const usersRouter = express.Router();
 const DBConnectionPromise = require("../database.js");
+const bcrypt = require("bcrypt");
 
 // GET route to retrieve all users
 usersRouter.get("/", async (req, res) => {
@@ -24,14 +25,21 @@ usersRouter.get("/", async (req, res) => {
 usersRouter.post("/", async (req, res) => {
   try {
     const connection = await DBConnectionPromise;
+    
+    const { username, password} = req.body;
 
-    const { username, password, salt } = req.body;
+    const saltRounds = 10;
+    const salt = await bcrypt.genSalt(saltRounds)
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+console.log('Hashed Password:', hashedPassword);
+console.log('Salt:', salt);
 
     const query = `
             INSERT INTO users (username, password, salt)
             VALUES (?, ?, ?)
           `;
-    const values = [username, password, salt];
+    const values = [username, hashedPassword, salt];
 
     connection.query(query, values, (err, results) => {
       if (err) {
@@ -108,6 +116,48 @@ usersRouter.delete("/:id", async (req, res) => {
     } catch (err) {
       console.error("Database connection error:", err);
       res.status(500).json({ error: "Database connection error" });
+    }
+  });
+
+// POST route to Login a User
+  usersRouter.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+  
+    try {
+
+      const connection = await DBConnectionPromise;
+      
+      // 1. Query the database to find the user
+      const query = 'SELECT * FROM users WHERE username = ?';
+      connection.query(query, [username], async (err, results) => {
+        if (err) {
+          console.error('Error during login:', err);
+          return res.status(500).json({ error: 'Internal server error' });
+        }
+  
+        if (results.length === 0) {
+          // User not found
+          return res.status(401).json({ error: 'Invalid username or password' });
+        }
+  
+        const user = results[0]; // Get the first (and only) user from the results
+  
+        // 2. Compare passwords
+        const passwordMatch = await bcrypt.compare(password, user.password);
+  
+        if (passwordMatch) {
+          // 3. Passwords match, create a session
+          req.session.userId = user.user_id;
+          res.json({ message: 'Login successful' });
+        } else {
+          // Passwords don't match
+          res.status(401).json({ error: 'Invalid username or password' });
+        }
+      });
+    } catch (error) {
+      console.error('Error during login:', error);
+      res.status(500).json({ error: 'Internal server error'   
+   });
     }
   });
 
