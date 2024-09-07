@@ -134,10 +134,10 @@ vitalsRouter.delete("/:id", async (req, res) => {
 });
 
 // GET route to retrieve latest entry FROM SPECIFIC patient
-vitalsRouter.get("/latest/:id", async (req, res) => {
+vitalsRouter.get("/latest", async (req, res) => {
   try {
     const connection = await DBConnectionPromise; // Wait for the Promise to resolve
-    const patientId = req.params.id; // Get patient_id from URL parameters
+    // const patientId = req.params.id; // Get patient_id from URL parameters
     const query = `SELECT 
     vitals.*  -- Select all columns from the vitals table
 FROM 
