@@ -68,17 +68,17 @@ vitalsRouter.post("/", async (req, res) => {
   }
 });
 
-vitalsRouter.put('/:id', async (req, res) => {
+vitalsRouter.put("/:id", async (req, res) => {
   try {
-    const connection = await DBConnectionPromise; 
+    const connection = await DBConnectionPromise;
 
     const vitalId = req.params.id;
     const updatedData = req.body; // Get all updated data from the request body
 
     // Dynamically build the SET clause
     const setClause = Object.keys(updatedData)
-      .map(key => `${key} = ?`)
-      .join(', ');
+      .map((key) => `${key} = ?`)
+      .join(", ");
 
     const query = `
       UPDATE vitals 
@@ -93,9 +93,9 @@ vitalsRouter.put('/:id', async (req, res) => {
         console.error("Error updating vitals:", err);
         res.status(500).json({ error: "Error updating vitals" });
       } else if (results.affectedRows === 0) {
-        res.status(404).json({ error: 'Vital not found' });
+        res.status(404).json({ error: "Vital not found" });
       } else {
-        res.json({ message: 'Vital updated successfully' });
+        res.json({ message: "Vital updated successfully" });
       }
     });
   } catch (err) {
@@ -103,7 +103,6 @@ vitalsRouter.put('/:id', async (req, res) => {
     res.status(500).json({ error: "Database connection error" });
   }
 });
-
 
 // DELETE route to delete a vital entry
 vitalsRouter.delete("/:id", async (req, res) => {
@@ -123,9 +122,9 @@ vitalsRouter.delete("/:id", async (req, res) => {
         console.error("Error deleting vitals:", err);
         res.status(500).json({ error: "Error deleting vitals" });
       } else if (results.affectedRows === 0) {
-        res.status(404).json({ error: 'Vital not found' });
+        res.status(404).json({ error: "Vital not found" });
       } else {
-        res.json({ message: 'Vital deleted successfully' });
+        res.json({ message: "Vital deleted successfully" });
       }
     });
   } catch (err) {
@@ -134,5 +133,35 @@ vitalsRouter.delete("/:id", async (req, res) => {
   }
 });
 
+// GET route to retrieve latest entry FROM SPECIFIC patient
+vitalsRouter.get("/latest/:id", async (req, res) => {
+  try {
+    const connection = await DBConnectionPromise; // Wait for the Promise to resolve
+    const patientId = req.params.id; // Get patient_id from URL parameters
+    const query = `SELECT 
+    vitals.*  -- Select all columns from the vitals table
+FROM 
+    vitals
+JOIN 
+    (SELECT patient_id, MAX(datetime) AS max_datetime 
+     FROM vitals 
+     GROUP BY patient_id) AS latest_vitals 
+ON 
+    vitals.patient_id = latest_vitals.patient_id 
+    AND vitals.datetime = latest_vitals.max_datetime;`;
+
+    connection.query(query, (err, results) => {
+      if (err) {
+        console.error("Error fetching vitals:", err);
+        res.status(500).json({ error: "Error fetching vitals" });
+      } else {
+        res.json(results);
+      }
+    });
+  } catch (err) {
+    console.error("Database connection error:", err);
+    res.status(500).json({ error: "Database connection error" });
+  }
+});
 
 module.exports = vitalsRouter;
