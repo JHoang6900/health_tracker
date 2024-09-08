@@ -39,30 +39,53 @@ function PatientList() {
     console.log("latestVitalsData ~>", latestVitalsData);
   }, [shouldFetchData, latestVitalsData, patientsData]);
 
+  
   return (
-    <div
-      id="outerDivCentering"
-      className="flex items-center justify-center h-screen"
-    >
-      {/* INSERT EXAMPLE PATIENT CODE HERE */}
-
+    <div id="outerDivCentering" className="flex items-center justify-center h-screen">
       <div className="flex flex-col items-center justify-center w-full p-6">
         {/* Card container */}
-        {patientsData.map((patient) => (
-          <div
-            key={patient.patient_id}
-            className="w-full p-6 my-2 border border-white shadow-md rounded-3xl md:w-1/4"
-          >
-            <h2 className="mb-2 text-2xl font-semibold text-white">
-              {patient.name}
-              <span className="text-gray-500">| 0{patient.patient_id}</span>
-            </h2>
-          </div>
-        ))}
+        {patientsData.map((patient) => {
+          // Find the latest vitals for this patient
+          const latestVitals = latestVitalsData.find(vital => vital.patient_id === patient.patient_id);
+  
+          return (
+            <div
+              key={patient.patient_id}
+              className="w-full p-6 my-2 border border-white shadow-md rounded-3xl md:w-1/4"
+            >
+              <h2 className="mb-2 text-2xl font-semibold text-white">
+                {patient.name}
+                <span className="text-gray-500">| 0{patient.patient_id}</span>
+              </h2>
+  
+              {latestVitals && ( // Conditionally render vitals if found
+                <div className="text-gray-400">
+                  <p className="mb-1"> 
+                    <span className="font-medium text-green-400">Last Recorded:</span> {latestVitals.datetime} 
+                  </p>
+                  <p className="mb-1">
+                    <span className="font-medium">Blood Pressure:</span> {latestVitals.blood_pressure}
+                  </p>
+                  <p className="mb-1">
+      <span className="font-medium">Pulse:</span> {latestVitals.pulse} bpm
+    </p>
+    <p className="mb-1">
+      <span className="font-medium">Oxygen:</span> {latestVitals.oxygen}%
+    </p>
+    <p className="mb-1">
+      <span className="font-medium">Temperature:</span> {latestVitals.temperature}°F
+    </p>
+    <p>
+      <span className="font-medium">Respiration:</span> {latestVitals.respiration} bpm
+    </p>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
-  );
-}
+  );}
 export default PatientList;
 
 // ----------------------------------------------------------------
