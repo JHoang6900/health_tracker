@@ -164,32 +164,38 @@ ON
   }
 });
 
-  // GET route to retrieve all vitals of a single patient by ID
-  vitalsRouter.get("/:id", async (req, res) => {
-    try {
-      const connection = await DBConnectionPromise;
-      const patientId = req.params.id; // Get vital_id from URL parameters
-  
-      const query = `
-        SELECT * FROM vitals
-        WHERE patient_id = ?
+// GET route to retrieve all vitals of a single patient by ID
+vitalsRouter.get("/:id", async (req, res) => {
+  try {
+    const connection = await DBConnectionPromise;
+    const patientId = req.params.id; // Get vital_id from URL parameters
+
+    const query = `
+        SELECT 
+    vitals.*, 
+    patients.name AS patient_name, 
+    users.username AS user_name
+    FROM vitals
+    JOIN patients ON vitals.patient_id = patients.patient_id
+    JOIN users ON vitals.user_id = users.user_id
+    WHERE vitals.patient_id = ?;
       `;
-      const values = [patientId];
-  
-      connection.query(query, values, (err, results) => {
-        if (err) {
-          console.error("Error fetching vitals:", err);
-          res.status(500).json({ error: "Error fetching vitals." });
-        } else if (results.affectedRows === 0) {
-          res.status(404).json({ error: 'Vitals not found' });
-        } else {
-          res.json(results);
-        }
-      });
-    } catch (err) {
-      console.error("Database connection error:", err);
-      res.status(500).json({ error: "Database connection error" });
-    }
-  });
+    const values = [patientId];
+
+    connection.query(query, values, (err, results) => {
+      if (err) {
+        console.error("Error fetching vitals:", err);
+        res.status(500).json({ error: "Error fetching vitals." });
+      } else if (results.affectedRows === 0) {
+        res.status(404).json({ error: "Vitals not found" });
+      } else {
+        res.json(results);
+      }
+    });
+  } catch (err) {
+    console.error("Database connection error:", err);
+    res.status(500).json({ error: "Database connection error" });
+  }
+});
 
 module.exports = vitalsRouter;
