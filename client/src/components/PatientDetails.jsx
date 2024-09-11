@@ -60,7 +60,7 @@ function PatientDetails() {
   return (
     <div
       id="outerDivCentering"
-      className="flex items-center justify-center h-screen"
+      className="flex flex-col items-center justify-center h-screen"
     >
       <div className="flex w-full border border-white rounded-3xl md:w-1/4">
         <div className="flex items-center justify-center w-full">
@@ -183,6 +183,40 @@ function PatientDetails() {
           </div>
         </div>
       </div>
+
+
+
+
+      <h2 className="mt-4 text-white underline">Past Vitals</h2>
+{patientVitals.length > 0 ? (
+  <table className="text-white table-auto"> {/* Add table-auto for better column sizing and w-full for full width */}
+    <thead>
+      <tr>
+        <th className="px-4 py-2">Date/Time</th> 
+        <th className="px-4 py-2 text-center">Blood Pressure</th>  {/* Center the header text */}
+        <th className="px-4 py-2">Pulse</th> 
+        <th className="px-4 py-2">Oxygen</th> 
+        <th className="px-4 py-2 text-center">Temperature</th>  {/* Center the header text */}
+        <th className="px-4 py-2 text-center">Respiration</th> {/* Center the header text */}
+      </tr>
+    </thead>
+    <tbody>
+      {patientVitals.map((vital) => (
+        <tr key={vital.vital_id}>
+          <td className="px-4 py-2 border">{vital.datetime}</td>
+          <td className="px-4 py-2 text-center border">{vital.blood_pressure}</td> {/* Center the cell content */}
+          <td className="px-4 py-2 border">{vital.pulse}</td>
+          <td className="px-4 py-2 border">{vital.oxygen}</td>
+          <td className="px-4 py-2 text-center border">{vital.temperature}</td> {/* Center the cell content */}
+          <td className="px-4 py-2 text-center border">{vital.respiration}</td> {/* Center the cell content */}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+) : (
+  <p className="text-white">No vitals recorded yet.</p>
+)}
+ 
     </div>
   );
 }
