@@ -1,14 +1,17 @@
+import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
 function ProtectedRoute({ children }) {
-  const isAuthenticated = !!localStorage.getItem('userId');
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('userId'));
+
+  useEffect(() => {
+    setIsAuthenticated(!!localStorage.getItem('userId')); 
+  }, [localStorage.getItem('userId')]); 
 
   if (isAuthenticated) {
-    console.log('isAuthenticated TRUE ~>', isAuthenticated);
-    return children; // Render the protected component (PatientList or PatientDetails)
+    return children; 
   } else {
-    console.log('isAuthenticated FALSE ~>', isAuthenticated);
-    return <Navigate to="/login" replace />; // Redirect to login if not authenticated
+    return <Navigate to="/login" replace />;
   }
 }
 

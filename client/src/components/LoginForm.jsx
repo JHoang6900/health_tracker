@@ -1,11 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 
 function LoginForm() {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+
+  
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const inputName = event.target.name;
@@ -18,13 +24,18 @@ function LoginForm() {
     console.log("newFormData ~>", newFormData);
   };
 
+
+
   const handleLoginUser = async () => {
     event.preventDefault();
+
+
     axios
       .post("http://localhost:8080/users/login", formData, {withCredentials: true})
       .then(function (response) {
         localStorage.setItem('userId', response.data.userId);
         console.log("User logged in successfully:", response.data);
+        navigate('/patients'); // Use navigate to redirect
         // ... handle success (e.g., redirect to login page)
       })
       .catch(function (error) {

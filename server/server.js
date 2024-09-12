@@ -15,7 +15,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: { 
-    maxAge: 604800  // Nested within the 'cookie' object
+    maxAge: 15  // Nested within the 'cookie' object
   }
 }));
 
