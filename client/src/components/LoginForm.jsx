@@ -21,8 +21,9 @@ function LoginForm() {
   const handleLoginUser = async () => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/users/login", formData)
+      .post("http://localhost:8080/users/login", formData, {withCredentials: true})
       .then(function (response) {
+        localStorage.setItem('userId', response.data.userId);
         console.log("User logged in successfully:", response.data);
         // ... handle success (e.g., redirect to login page)
       })

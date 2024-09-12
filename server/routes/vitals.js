@@ -68,6 +68,7 @@ vitalsRouter.post("/", async (req, res) => {
   }
 });
 
+// PUT route to update a vital 
 vitalsRouter.put("/:id", async (req, res) => {
   try {
     const connection = await DBConnectionPromise;

@@ -11,6 +11,8 @@ function PatientList() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log("Fetching!! LETS GET THIS STARTED!");
+
         const patientsResponse = await axios.get(
           "http://localhost:8080/patients"
         );

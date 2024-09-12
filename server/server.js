@@ -11,12 +11,18 @@ const session = require('express-session');
 const app = express();
 
 app.use(session({
-  secret: 'superdupersecret',
+  secret: 'superdupersecret', 
   resave: false,
   saveUninitialized: true,
+  cookie: { 
+    maxAge: 604800  // Nested within the 'cookie' object
+  }
 }));
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,  // Allows for cookies to be sent across domains
+}));
 app.use(express.json()); // This line is important for parsing JSON data in requests
 // ... Your API routes will go here, and they'll use the DBConnection object to interact with the database
 
