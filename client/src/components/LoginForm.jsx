@@ -35,7 +35,7 @@ function LoginForm() {
       .then(function (response) {
         localStorage.setItem('userId', response.data.userId);
         console.log("User logged in successfully:", response.data);
-        navigate('/patients'); // Use navigate to redirect
+        // navigate('/patients'); // Use navigate to redirect
         // ... handle success (e.g., redirect to login page)
       })
       .catch(function (error) {

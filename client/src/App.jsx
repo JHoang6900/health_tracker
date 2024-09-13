@@ -9,10 +9,11 @@ import Navbar from './components/Navbar.jsx';
 function App() {
   return (
     <BrowserRouter>
-    <Navbar />
+    {/* <Navbar /> */}
       <Routes>
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/" element={<Navbar />} />
        
 
         {/* Protected Routes */}

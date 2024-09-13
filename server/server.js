@@ -15,7 +15,10 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: { 
-    maxAge: 15  // Nested within the 'cookie' object
+    maxAge: 1800000, 
+    httpOnly: true, // Adjust if needed based on your frontend framework
+    secure: false,   // Set to false if not using HTTPS in development
+    sameSite: 'lax'  // Adjust if needed
   }
 }));
 
