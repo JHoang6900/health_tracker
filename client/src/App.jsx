@@ -4,13 +4,16 @@ import LoginForm from './components/LoginForm';
 import PatientList from './components/PatientList';
 import PatientDetails from './components/PatientDetails';
 import ProtectedRoute from './components/ProtectedRoute';
+import Navbar from './components/Navbar.jsx';
 
 function App() {
   return (
     <BrowserRouter>
+    <Navbar />
       <Routes>
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/login" element={<LoginForm />} />
+       
 
         {/* Protected Routes */}
         <Route path="/patients" element={<ProtectedRoute><PatientList /></ProtectedRoute>} />

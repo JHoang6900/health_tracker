@@ -60,7 +60,7 @@ function PatientDetails() {
   return (
     <div
       id="outerDivCentering"
-      className="flex flex-col items-center justify-center h-screen"
+      className="flex flex-col items-center justify-center mt-4"
     >
       <div className="flex w-full border border-white rounded-3xl md:w-1/4">
         <div className="flex items-center justify-center w-full">

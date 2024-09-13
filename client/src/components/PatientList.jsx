@@ -47,9 +47,9 @@ function PatientList() {
   return (
     <div
       id="outerDivCentering"
-      className="flex items-center justify-center h-screen"
+      className="flex items-center justify-center"
     >
-      <div className="flex flex-col items-center justify-center w-full p-6">
+      <div className="flex flex-col items-center justify-center w-full mt-2">
         {/* Card container */}
         {patientsData.map((patient) => {
           // Find the latest vitals for this patient
