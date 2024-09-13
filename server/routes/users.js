@@ -146,10 +146,11 @@ usersRouter.post("/login", async (req, res) => {
       if (passwordMatch) {
         // 3. Passwords match, create a session
         req.session.userId = user.user_id;
-        res.json({ message: "Login successful" });
-        console.log('req.session.userId ~>', req.session.userId);
-        console.log('user.user_id ~>', user.user_id);
-        console.log('Session created:', req.session);
+        res.json({ message: "Login successful!" });
+        console.log("Login successful!");
+        console.log("req.session.userId ~>", req.session.userId);
+        console.log("user.user_id ~>", user.user_id);
+        // console.log("Session created:", req.session);
       } else {
         // Passwords don't match
         res.status(401).json({ error: "Invalid username or password" });
@@ -163,26 +164,33 @@ usersRouter.post("/login", async (req, res) => {
 
 usersRouter.get("/current", async (req, res) => {
   try {
-    const connection = await DBConnectionPromise; 
+    const connection = await DBConnectionPromise;
     const userId = req.session.userId;
 
-    console.log('JEPPY EXPECTS Session data in /current:', req.session);
+    // checks for valid cookie from express-session
+    // console.log("Session data in /current:", req.session);
 
-    connection.query("SELECT * FROM users WHERE user_id = ?", [userId], (err, results) => {
-      if (err) {
-        console.error("Error fetching User:", err);
-        res.status(500).json({ error: "Error fetching User." });
-      } else {
-        res.json(results);
-        console.log('QUERY RESULTS:', results);
-        console.log('User fetched:', req.session.userId); 
+    connection.query(
+      "SELECT * FROM users WHERE user_id = ?",
+      [userId],
+      (err, results) => {
+        if (err) {
+          console.error("Error fetching User:", err);
+          res.status(500).json({ error: "Error fetching User." });
+        } else {
+          const user = results[0]; // Get the user object from the query results
+
+          const { password, salt, ...userData } = user; // Exclude password and salt from the response
+          res.json(userData);
+          // console.log("QUERY RESULTS:", results);
+          console.log("User ID fetched:", 'ID', req.session.userId);
+        }
       }
-    });
+    );
   } catch (err) {
     console.error("Database connection error:", err);
     res.status(500).json({ error: "Database connection error" });
   }
 });
-
 
 module.exports = usersRouter;
