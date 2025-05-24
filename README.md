@@ -125,11 +125,10 @@ project_structure_here
   ### To Do:
   - [ ] Wireframe *(see [Front End](#front-end))*
   - [ ] Draft Database Schema *(see [Back End](#back-end))*
-  - [ ] Choose Team Roles *(see [Team Roles](#team-roles))*
 
   ### Research Tasks:
 
-  - [ ] Familiarize with TailwindCSS 
+  - [ ] Brainstorm styling guidelines
   - [ ] Review MYSQL
   - [ ] Research Auth
 
