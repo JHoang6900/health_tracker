@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Developed a robust personal health monitoring application designed to continuously track and visualize critical vital signs, directly addressing real world caregiving challenges. This project demonstrates proficiency in building data-driven applications, leveraging modern APIs, and designing user-centric interfaces.
+Developed a practical personal health monitoring application designed to continuously track and visualize critical vital signs, directly addressing real world caregiving challenges. This project demonstrates proficiency in building data driven applications, leveraging modern APIs, and designing user friendly interfaces.
 
 By tracking various health metrics including:
 
