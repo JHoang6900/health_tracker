@@ -24,25 +24,25 @@ Using modern web technologies such as Vite, TailwindCSS, React, JavaScript, MySQ
 
 - *Full-Stack Development:* Engineered robust applications integrating React frontends, Node.js/Express.js backends, and relational databases (e.g., MySQL, SQL Server).
 
-*- Secure User Authentication:* Implemented secure user authentication (bcrypt, express-session) with protected routes for sensitive data access.
+- *Secure User Authentication:* Implemented secure user authentication (bcrypt, express-session) with protected routes for sensitive data access.
 
-*- RESTful API Design & Implementation:* Developed comprehensive RESTful APIs with CRUD operations across various entities (e.g., Patients, Users, Vitals), including advanced queries for specific data (e.g., latest vital signs). Demonstrated expertise in working with external APIs (e.g., Withings Health API for automated vital sign retrieval, handling API authentication, and managing asynchronous data calls).
+- *RESTful API Design & Implementation:* Developed comprehensive RESTful APIs with CRUD operations across various entities (e.g., Patients, Users, Vitals), including advanced queries for specific data (e.g., latest vital signs). Demonstrated expertise in working with external APIs (e.g., Withings Health API for automated vital sign retrieval, handling API authentication, and managing asynchronous data calls).
 
-*- Cloud & Data Management:* Designed and implemented systems for pulling and processing raw data from cloud-based services (e.g., Withings' cloud), preparing it for persistent storage and analysis. Utilized databases (e.g., MySQL, SQL Server) for efficient data storage and retrieval, managing data integrity with foreign key constraints and optimizing SQL queries (complex joins).
+- *Cloud & Data Management:* Designed and implemented systems for pulling and processing raw data from cloud-based services (e.g., Withings' cloud), preparing it for persistent storage and analysis. Utilized databases (e.g., MySQL, SQL Server) for efficient data storage and retrieval, managing data integrity with foreign key constraints and optimizing SQL queries (complex joins).
 
-*- Frontend Development* (React & Vite): Built responsive and interactive user interfaces using React (Vite build tool), utilizing modern hooks (useState, useEffect, useParams, useNavigate) for efficient state management and navigation. Designed for real-time and historical vital sign display, focusing on clarity and ease of access for users/caregivers.
+- *Frontend Development* (React & Vite): Built responsive and interactive user interfaces using React (Vite build tool), utilizing modern hooks (useState, useEffect, useParams, useNavigate) for efficient state management and navigation. Designed for real-time and historical vital sign display, focusing on clarity and ease of access for users/caregivers.
 
-*- Responsive UI with Tailwind CSS:* Designed mobile-first, responsive UIs with Tailwind CSS, ensuring optimal display and user experience across various screen sizes.
+- *Responsive UI with Tailwind CSS:* Designed mobile-first, responsive UIs with Tailwind CSS, ensuring optimal display and user experience across various screen sizes.
 
-*- Data Visualization & Trend Analysis:* Developed intuitive graphical representations (e.g., line graphs for vital sign trends like blood pressure, heart rate) to visualize measurements over time, showcasing skills in data interpretation and charting libraries (e.g., D3.js).
+- *Data Visualization & Trend Analysis:* Developed intuitive graphical representations (e.g., line graphs for vital sign trends like blood pressure, heart rate) to visualize measurements over time, showcasing skills in data interpretation and charting libraries (e.g., D3.js).
 
-*- API Integration (Axios):* Seamlessly integrated frontends with backend APIs using Axios for asynchronous data fetching, form submissions, and response processing. Configured secure cross-origin communication (cors, withCredentials).
+- *API Integration (Axios):* Seamlessly integrated frontends with backend APIs using Axios for asynchronous data fetching, form submissions, and response processing. Configured secure cross-origin communication (cors, withCredentials).
 
-*- Environmental Variable Management:* Secured sensitive database credentials and application secrets using dotenv for best-practice configuration management.
+- *Environmental Variable Management:* Secured sensitive database credentials and application secrets using dotenv for best-practice configuration management.
 
-*- Problem-Solving & Independent Development:* Independently conceived, designed, and implemented technical solutions to address real-world needs (e.g., personal caregiving challenges), demonstrating strong problem-solving abilities, project management, and self-driven learning.
+- *Problem-Solving & Independent Development:* Independently conceived, designed, and implemented technical solutions to address real-world needs (e.g., personal caregiving challenges), demonstrating strong problem-solving abilities, project management, and self-driven learning.
 
-*- Attention to Detail & Accuracy:* Ensured precise data measurement display (e.g., in mmHg for blood pressure) for clinical relevance and accurate data presentation.
+- *Attention to Detail & Accuracy:* Ensured precise data measurement display (e.g., in mmHg for blood pressure) for clinical relevance and accurate data presentation.
 
 
 ## Project Architecture
