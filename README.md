@@ -22,7 +22,7 @@ Using modern web technologies such as Vite, TailwindCSS, React, JavaScript, MySQ
 
 ## Key Features & Demonstrated Skills:
 
-*- Full-Stack Development:* Engineered robust applications integrating React frontends, Node.js/Express.js backends, and relational databases (e.g., MySQL, SQL Server).
+- *Full-Stack Development:* Engineered robust applications integrating React frontends, Node.js/Express.js backends, and relational databases (e.g., MySQL, SQL Server).
 
 *- Secure User Authentication:* Implemented secure user authentication (bcrypt, express-session) with protected routes for sensitive data access.
 
