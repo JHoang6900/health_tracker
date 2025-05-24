@@ -4,7 +4,9 @@
 
 ## Project Overview
 
-The Health Tracker App is designed to help individuals monitor and visualize their health statistics to gain insights into their overall well-being. By inputting various health metrics including:
+Developed a robust personal health monitoring application designed to continuously track and visualize critical vital signs, directly addressing real-world caregiving challenges. This project demonstrates proficiency in building data-driven applications, leveraging modern APIs, and designing user-centric interfaces.
+
+By tracking various health metrics including:
 
 - Date & Time
 - Blood Pressure
@@ -13,20 +15,13 @@ The Health Tracker App is designed to help individuals monitor and visualize the
 - Temperature
 - and Respiration
 
-Users can track their progress over time and make informed decisions about their lifestyle choices.
+Users can track their progress over time and make informed decisions about their lifestyle choices and healthcare decisions. 
 
 The primary goal of the project is to provide users with a user friendly interface to input and visualize their health data efficiently. The app aims to empower individuals to take control of their health by offering them a convenient tool to monitor their vital statistics and identify any trends or patterns that may affect their well-being.
-
 Using modern web technologies such as Vite, TailwindCSS, React, JavaScript, MySQL, and D3.js, the Health Tracker App offers a simple experience for users to interact with their health data, whether it's viewing historical records, analyzing trends, or setting personal health goals.
 
-## Team Roles
+## Features
 
-- Full Stack Lead: Overall App design and functionality
-- Front End: User Interface and visuals
-- Back End: User Login, Logic, and databases
-- Product Research: Wireframe/Readme/Foundation setting
-
-*TODO: choose which roles you want to primarily be working on for the duration of this App & send out a message in DunDrag. Roles are not locked into place, but gives general guidelines on structure without stepping onto each other's toes so we can be flexible as needed/wanted.*
 
 ## Project Architecture
 
@@ -68,9 +63,7 @@ So that I can identify any trends or patterns affecting my well being.
 
 Provide guidelines for contributing to the project, including coding standards, pull request procedures, and issue tracking.
 
-## Development Workflow
-
-Explain the development workflow: namely version control practices, branching naming structure, and code review processes.
+## Development Workflow (namely version control practices, branching naming structure, and code review processes.)
 
 ``` git
 git checkout <initials/feature>
@@ -136,4 +129,4 @@ project_structure_here
 
 ---
 
-🏆 **Health Tracker Full Stack Application Readme** - *Last Updated: 3/25/2024*
+🏆 **Health Tracker Full Stack Application Readme** - *Last Updated: 5/24/2025*
